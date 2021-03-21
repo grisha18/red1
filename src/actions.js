@@ -1,5 +1,9 @@
 
+import { CHANGE_TO_BLACK, CHANGE_TO_RED } from "./type";
+
+
 // если redux - возвращает объект
+
 // при thunk -  возвращает функцию
 export const increaseNumber = (number=1)=>{
     return {
@@ -8,7 +12,16 @@ export const increaseNumber = (number=1)=>{
     }
 };
 
-
+export const changeToBlack = ()=>{
+    return {
+        type: CHANGE_TO_BLACK
+    }
+}
+export const changeToRed = ()=>{
+    return {
+        type: CHANGE_TO_RED 
+    }
+}
 export const decreaseNumber = (number=1) => {
     return {
         type: "DECREASE_NUMBER",

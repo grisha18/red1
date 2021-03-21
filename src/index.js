@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {applyMiddleware, createStore} from 'redux';
-import {reducer, initialState} from './reducer';
+import {applyMiddleware, createStore, compose } from 'redux';
+import {rootReducer} from './reducer';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 
 
-console.log("initial state is", initialState);
+
 
 
 // создаем стор - хранилище
@@ -32,9 +32,13 @@ console.log("initial state is", initialState);
 // с помощью хука useref получить данные из input[text]
 // при нажатии на кнопку вывести в консоль
 
-const store = createStore(reducer, initialState,applyMiddleware(thunk));
+// https://learn.javascript.ru/generator прочитать
+// и сделать, чтобы при нажатии на кнопку, цвет менялся с черного на красный и с красного на черный
+
+const store = createStore(rootReducer,  compose( applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() ));
 
 
+// higher order component
 
 ReactDOM.render(
 
