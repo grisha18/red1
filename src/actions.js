@@ -1,5 +1,5 @@
 
-import { CHANGE_TO_BLACK, CHANGE_TO_RED} from "./type";
+import { CHANGE_TO_BLACK, CHANGE_TO_RED,CHANGE_TO_COLOR} from "./type";
 
 
 // если redux - возвращает объект
@@ -23,6 +23,28 @@ export const changeToRed = ()=>{
     }
 }
 
+export const changeToColor = (color)=>{
+
+    return{
+        type: CHANGE_TO_COLOR,
+        payload: color
+    }   
+    
+}
+
+
+
+export const changeToColorWithDelay = (color)=>{
+
+    return(
+
+        function(dispatch){
+
+            setTimeout( () =>{ dispatch(changeToColor(color)) },
+                             3000)
+        }
+    )
+}
 
 export const decreaseNumber = (number=1) => {
     return {
@@ -36,6 +58,11 @@ export const increaseWithDelay = ()=>{
         setTimeout( ()=>dispatch(increaseNumber(1)), 3000 );
     }
 }
+
+
+
+
+
 export const decreaseWithDelay = () => {
     return(
         function(dispatch){

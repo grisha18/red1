@@ -1,7 +1,12 @@
 
 import React, { useState } from 'react';
 import {connect} from "react-redux";
-import {increaseNumber, decreaseNumber, increaseWithDelay, changeToBlack, changeToRed} from "./actions.js";
+import {increaseNumber, decreaseNumber, increaseWithDelay, changeToBlack, changeToRed,changeToColor} from "./actions.js";
+
+
+import {makeColor} from "./util";
+
+
 
 class Login extends React.Component{
     
@@ -9,20 +14,7 @@ class Login extends React.Component{
         super(props);
 
 
-      const color = ()=>{
-
-            const [state, setState] = useState(); 
-        
-            this.state = {
-                style: {
-                color: 'red'
-                }
-            };
-
-
-
-        }
-
+        this.state = {color: "red", number: 2, page: 13};
         
         this.handleClick = this.handleClick.bind(this);
         this.clickHandler = this.clickHandler.bind(this);
@@ -41,8 +33,11 @@ class Login extends React.Component{
 
 
     changeClick(){
-        this.props.changeColor();
-        this.setState({ style: { color: 'black' } }); 
+        // DRY don't repeat yourself
+        const hex = makeColor();
+        this.props.changeToColor(hex);   /// dispatch(changeToColor(hex))
+
+        
     }
     
 
@@ -58,7 +53,7 @@ class Login extends React.Component{
                 <input id="password" type="text" name="password"></input>
                 <button onClick={this.handleClick}>click me {this.props.number}</button>
                 <button onClick={this.clickHandler}>decrement</button>
-                <button onClick={this.changeClick}>changeColor</button>
+                <button onClick={this.changeClick} style={{color: this.props.color}}>changeColor</button>
                 
                 
             </>
@@ -75,7 +70,8 @@ class Login extends React.Component{
 
 function mapStateToProps(state){
     return {
-        number: state.numberReducer.number
+        number: state.numberReducer.number,
+        color: state.colorReducer.color
     }
 }
 
@@ -83,9 +79,9 @@ function mapDispatchToProps(dispatch){
     return {increaseNumber: ()=>dispatch(increaseNumber()), 
             decrease: ()=>dispatch(decreaseNumber()),
             changeColor: ()=>dispatch(changeToRed()),
+            changeToColor: (color)=>dispatch(changeToColor(color))
          }
 }
 
 // export default connect(null, null)(Login);
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
-// export default Login;

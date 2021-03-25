@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
-import {CHANGE_TO_BLACK, CHANGE_TO_RED} from "./type";
+import {CHANGE_TO_BLACK, CHANGE_TO_RED, CHANGE_TO_COLOR} from "./type";
 
 const initialState = {
     number: 5,
 }
 
-
+// r g b
 const initialColorState = {
-    color: "black"
+    color: "#FF33ff"
 }
 
 
@@ -23,6 +23,11 @@ const colorReducer = (state=initialColorState, action) =>{
         case CHANGE_TO_RED:{
             const newState = {...state};
             newState.color = "red";
+            return newState;
+        }
+        case CHANGE_TO_COLOR:{
+            const newState = {...state};
+            newState.color = action.payload;
             return newState;
         }
         default:
