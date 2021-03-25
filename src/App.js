@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {increaseNumber, decreaseNumber, increaseWithDelay, decreaseWithDelay} from "./actions";
 import Test from './Test';
 import Login from "./Login";
-import "./App.css"
+import "./App.css";
+
 
 // action creators
 

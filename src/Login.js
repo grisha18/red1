@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import {connect} from "react-redux";
 import {increaseNumber, decreaseNumber, increaseWithDelay, changeToBlack, changeToRed} from "./actions.js";
 
@@ -7,29 +7,45 @@ class Login extends React.Component{
     
     constructor(props){
         super(props);
+
+
+      const color = ()=>{
+
+            const [state, setState] = useState(); 
+        
+            this.state = {
+                style: {
+                color: 'red'
+                }
+            };
+
+
+
+        }
+
+        
         this.handleClick = this.handleClick.bind(this);
         this.clickHandler = this.clickHandler.bind(this);
         this.changeClick = this.changeClick.bind(this);
     }
 
-
-
+    
     handleClick(){
         this.props.increaseNumber();
     }
     
 
     clickHandler(){
-
         this.props.decrease();
     }
 
 
     changeClick(){
-
         this.props.changeColor();
+        this.setState({ style: { color: 'black' } }); 
     }
     
+
     render(){
 
         
@@ -66,7 +82,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
     return {increaseNumber: ()=>dispatch(increaseNumber()), 
             decrease: ()=>dispatch(decreaseNumber()),
-            changeColor: ()=> dispatch(changeToRed()) }
+            changeColor: ()=>dispatch(changeToRed()),
+         }
 }
 
 // export default connect(null, null)(Login);

@@ -1,10 +1,8 @@
 import { combineReducers } from "redux";
-
 import {CHANGE_TO_BLACK, CHANGE_TO_RED} from "./type";
 
 const initialState = {
     number: 5,
-   
 }
 
 

@@ -1,5 +1,5 @@
 
-import { CHANGE_TO_BLACK, CHANGE_TO_RED } from "./type";
+import { CHANGE_TO_BLACK, CHANGE_TO_RED} from "./type";
 
 
 // если redux - возвращает объект
@@ -22,6 +22,8 @@ export const changeToRed = ()=>{
         type: CHANGE_TO_RED 
     }
 }
+
+
 export const decreaseNumber = (number=1) => {
     return {
         type: "DECREASE_NUMBER",

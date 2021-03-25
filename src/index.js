@@ -35,7 +35,7 @@ import thunk from 'redux-thunk';
 // https://learn.javascript.ru/generator прочитать
 // и сделать, чтобы при нажатии на кнопку, цвет менялся с черного на красный и с красного на черный
 
-const store = createStore(rootReducer,  compose( applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() ));
+const store = createStore(rootReducer,  compose (),( applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() ));
 
 
 // higher order component
