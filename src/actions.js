@@ -1,5 +1,5 @@
 
-import { CHANGE_TO_BLACK, CHANGE_TO_RED,CHANGE_TO_COLOR} from "./type";
+import { CHANGE_TO_BLACK, CHANGE_TO_RED,CHANGE_TO_COLOR, CHANGE_TO_COLOR_KNOPKA} from "./type";
 
 
 // если redux - возвращает объект
@@ -8,6 +8,13 @@ import { CHANGE_TO_BLACK, CHANGE_TO_RED,CHANGE_TO_COLOR} from "./type";
 export const increaseNumber = (number=1)=>{
     return {
         type: "INCREASE_NUMBER",
+        payload: number
+    }
+};
+
+export const changeNumber = (number=1)=>{
+    return {
+        type: "CHANGE_NUMBER",
         payload: number
     }
 };
@@ -31,7 +38,14 @@ export const changeToColor = (color)=>{
     }   
     
 }
+export const changeToColorKnopka = (color)=>{
 
+    return{
+        type: CHANGE_TO_COLOR_KNOPKA,
+        payload: color
+    }   
+    
+}
 
 
 export const changeToColorWithDelay = (color)=>{

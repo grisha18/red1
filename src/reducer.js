@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import {CHANGE_TO_BLACK, CHANGE_TO_RED, CHANGE_TO_COLOR} from "./type";
+import {CHANGE_TO_BLACK, CHANGE_TO_RED, CHANGE_TO_COLOR,CHANGE_TO_COLOR_KNOPKA} from "./type";
 
 const initialState = {
     number: 5,
@@ -26,6 +26,11 @@ const colorReducer = (state=initialColorState, action) =>{
             return newState;
         }
         case CHANGE_TO_COLOR:{
+            const newState = {...state};
+            newState.color = action.payload;
+            return newState;
+        }
+        case CHANGE_TO_COLOR_KNOPKA:{
             const newState = {...state};
             newState.color = action.payload;
             return newState;
